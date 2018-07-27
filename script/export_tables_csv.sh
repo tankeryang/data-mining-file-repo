@@ -11,18 +11,21 @@ for line in `cat ${BASE_PATH}/config/filepath.config`
         esac
     done
 
-for line in `cat ${BASE_PATH}/config/presto_prod.config`
-    do
-        PARAM_NAME=${line%%'='*}
-        PARAM_VALUE=${line##*'='}
-        case ${PARAM_NAME} in
-            presto.host) HOST=${PARAM_VALUE};;
-            presto.port) PORT=${PARAM_VALUE};;
-            presto.user) USER=${PARAM_VALUE};;
-            presto.catalog) CATALOG=${PARAM_VALUE};;
-        esac
-    done
+OPT=`getopt --long presto-config:,schema:,table-name:,file-name:`
 
-OPT=`getopt --long schema:,table-name:,file-name:`
+case "$1" in --presto-config)
+    for line in `cat ${BASE_PATH}/config/$2.config`
+        do
+            PARAM_NAME=${line%%'='*}
+            PARAM_VALUE=${line##*'='}
+            case ${PARAM_NAME} in
+                presto.host) HOST=${PARAM_VALUE};;
+                presto.port) PORT=${PARAM_VALUE};;
+                presto.user) USER=${PARAM_VALUE};;
+                presto.catalog) CATALOG=${PARAM_VALUE};;
+            esac
+        done
+    shift;
+    shift;;
 
 sh /program/presto-cli --server ${HOST}:${PORT} --user ${USER} --catalog ${CATALOG} --output-format CSV_HEADER --execute "select * from $2.$4" > ${BASE_PATH}/${INPUT_PATH}/$6.csv

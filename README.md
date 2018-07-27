@@ -38,3 +38,15 @@ scrap (一般放爬虫脚本)
 * __scrap__: 爬虫脚本
 * __script__: 功能脚本
 * __sql__: 特征工程 & ETL 的 SQL 脚本
+
+## 3. azkaban 调度
+
+* 在`azkaban/job/<项目名>/`下编写`job`文件
+* 使用`azkaban/pack2zip.sh`打包`job`:
+    ```shell
+    sh azkaban/pack2zip.sh --zip-name <压缩后的zip文件名> --dir-name <job/下的文件夹名, 即项目名>
+
+    # 例子
+    sh azkaban/pack2zip.sh --zip-name mms-mining-training_data --dir-name mms
+    ```
+* 上传`zip`文件至 azkaban

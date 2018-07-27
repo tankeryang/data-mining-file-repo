@@ -162,6 +162,7 @@ def insert_into_table(conn, values_list):
         # print(sql)
         cur = conn.cursor()
         cur.execute(sql)
+        print(cur.fetchall())
     else:
         pass
 

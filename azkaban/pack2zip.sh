@@ -15,14 +15,16 @@ case "$1" in
         shift; shift;;
 esac
 
+# echo $zip_name
+
 case "$1" in
     -d|--dir-name)
-        if [ $zip_name=="" ]; then
+        if [ $zip_name == "" ]; then
             zip_name=$2
         fi;
+        # echo $zip_name
         dir_name=$2;
         shift; shift;;
 esac
 
-cd ${JOB_PATH}
-zip -rv ${ZIP_PATH}/${zip_name}.zip ${dir_name}
+zip -rv ${ZIP_PATH}/${zip_name}.zip ${JOB_PATH}/${dir_name}

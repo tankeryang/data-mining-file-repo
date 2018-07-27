@@ -1,0 +1,4 @@
+type=command
+command=echo complete-extract-training_data_base_merge
+
+dependencies=extract-training_data_base_merge

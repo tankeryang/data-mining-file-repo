@@ -1,0 +1,4 @@
+type=command
+command=echo complete-transform-training_data_store_skc_week_merge
+
+dependencies=transform-training_data_store_skc_week_merge

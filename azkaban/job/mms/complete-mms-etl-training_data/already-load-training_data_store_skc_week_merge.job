@@ -1,0 +1,4 @@
+type=flow
+flow.name=complete-load-training_data_store_skc_week_merge
+
+dependencies=already-transform-training_data_store_skc_week_merge

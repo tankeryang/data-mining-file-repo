@@ -1,0 +1,6 @@
+type=command
+command=${cmd}
+
+sql.url.prefix=${ads.sql.url.prefix}
+sql.dir=training_data_store_skc_week_merge
+sql.name=increment

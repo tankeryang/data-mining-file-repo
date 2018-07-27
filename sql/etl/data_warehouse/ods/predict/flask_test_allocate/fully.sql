@@ -1,0 +1,78 @@
+DROP TABLE IF EXISTS ods_predict.flask_test_allocate;
+
+
+CREATE TABLE IF NOT EXISTS ods_predict.flask_test_allocate (
+    store_code                                  VARCHAR,
+    skc_code                                    VARCHAR,
+    week_code                                   VARCHAR,
+    city_name                                   VARCHAR,
+    area_code                                   VARCHAR,
+    store_type                                  VARCHAR,
+    store_level                                 VARCHAR,
+    store_retail_amount_mean_8weeks             DOUBLE,
+    store_sales_amount_mean_8weeks              DOUBLE,
+    sub_cate                                    VARCHAR,
+    leaf_cate                                   VARCHAR,
+    color_code                                  VARCHAR,
+    lining                                      VARCHAR,
+    customer_level_1_proportion_last_week       DOUBLE,
+    customer_level_2_proportion_last_week       DOUBLE,
+    customer_level_3_proportion_last_week       DOUBLE,
+    special_day_type                            VARCHAR,
+    weather_day_most                            VARCHAR,
+    weather_night_most                          VARCHAR,
+    tempreture_day_highest                      BIGINT,
+    tempreture_day_avg                          DOUBLE,
+    tempreture_day_lowest                       BIGINT,
+    tempreture_day_gap                          BIGINT,
+    tempreture_night_highest                    BIGINT,
+    tempreture_night_avg                        DOUBLE,
+    tempreture_night_lowest                     BIGINT,
+    tempreture_night_gap                        BIGINT,
+    tempreture_avg_gap                          DOUBLE,
+    retail_amount_mean                          DECIMAL(30, 2),
+    retail_amount_mean_gap_with_store           DOUBLE,
+    sales_amount_mean                           DECIMAL(30, 2),
+    sales_amount_mean_gap_with_store            DOUBLE,
+    sales_qty                                   BIGINT
+);
+
+
+INSERT INTO ods_predict.flask_test_allocate
+    SELECT
+        store_code,
+        skc_code,
+        week_code,
+        city_name,
+        area_code,
+        store_type,
+        store_level,
+        store_retail_amount_mean_8weeks,
+        store_sales_amount_mean_8weeks,
+        sub_cate,
+        leaf_cate,
+        color_code,
+        lining,
+        customer_level_1_proportion_last_week,
+        customer_level_2_proportion_last_week,
+        customer_level_3_proportion_last_week,
+        special_day_type,
+        weather_day_most,
+        weather_night_most,
+        tempreture_day_highest,
+        tempreture_day_avg,
+        tempreture_day_lowest,
+        tempreture_day_gap,
+        tempreture_night_highest,
+        tempreture_night_avg,
+        tempreture_night_lowest,
+        tempreture_night_gap,
+        tempreture_avg_gap,
+        retail_amount_mean,
+        retail_amount_mean_gap_with_store,
+        sales_amount_mean,
+        sales_amount_mean_gap_with_store,
+        sales_qty
+    FROM ads_test_.useful_data_store_skc_week_merge
+    WHERE interval_weeks_to_list = 0
+    AND year_week_code > '201821';

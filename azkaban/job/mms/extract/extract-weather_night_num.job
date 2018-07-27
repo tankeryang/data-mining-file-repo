@@ -2,4 +2,4 @@ type=command
 command=${cmd}
 
 sql.dir=weather_night_num
-sql.name=fully
+sql.names=fully

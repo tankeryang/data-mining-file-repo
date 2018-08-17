@@ -46,10 +46,10 @@ def get_params_dict(ptype=None):
     presto_engin = create_engine('presto://prod@10.10.22.8:10300/prod_hive/ods_mms')
     con = presto_engin.connect()
     sql_city_init = """
-        SELECT DISTINCT  wsc.city_id, si.city
+        SELECT DISTINCT  wsc.city_id, si.city_name
         FROM cdm_base.store_info si
         LEFT JOIN ods_mms.weather_support_city wsc
-        ON si.city = wsc.city_name
+        ON si.city_name = concat(wsc.city_name, '市')
         ORDER BY wsc.city_id
     """
     sql_city_remian = """
@@ -162,7 +162,8 @@ def insert_into_table(conn, values_list):
         # print(sql)
         cur = conn.cursor()
         cur.execute(sql)
-        print(cur.fetchall())
+        time.sleep(5)
+        # print(cur.fetchall())
     else:
         pass
 

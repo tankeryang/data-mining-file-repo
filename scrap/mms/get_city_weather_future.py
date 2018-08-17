@@ -2,6 +2,7 @@
 import os
 import sys
 import re
+import time
 import requests
 import pandas as pd
 from sqlalchemy import create_engine
@@ -106,8 +107,9 @@ def insert_into_table(conn, param_dict, headers):
         """.format('{}'.format(values_list).strip('[').strip(']'))
         cur = conn.cursor()
         cur.execute(sql)
-        print(cur.fetchall())
-        print('insert success!')
+        time.sleep(5)
+        # print(cur.fetchall())
+        # print('insert success!')
     else:
         raise Exception("values_list None!")
 

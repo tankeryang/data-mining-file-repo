@@ -1,0 +1,36 @@
+DROP TABLE IF EXISTS ads_mms.training_data_store_daliy_sales_amount_merge;
+
+
+CREATE TABLE ads_mms.training_data_store_daliy_sales_amount_merge(
+    store_code                     VARCHAR,
+    dates                          VARCHAR,
+    day_of_month                   VARCHAR,
+    day_of_week                    VARCHAR,
+    special_day_type               VARCHAR,
+    city_name                      VARCHAR,
+    area_code                      VARCHAR,
+    store_type                     VARCHAR,
+    store_level                    VARCHAR,
+    customer_level_1_last_2day     INTEGER,
+    customer_level_1_last_day      INTEGER,
+    customer_level_1_gap           INTEGER,
+    customer_level_2_last_2day     INTEGER,
+    customer_level_2_last_day      INTEGER,
+    customer_level_2_gap           INTEGER,
+    customer_level_3_last_2day     INTEGER,
+    customer_level_3_last_day      INTEGER,
+    customer_level_3_gap           INTEGER,
+    weather_day                    VARCHAR,
+    weather_night                  VARCHAR,
+    tempreture_day                 TINYINT,
+    tempreture_night               TINYINT,
+    tempreture_gap                 TINYINT,
+    discount_rate_mean_last_2day   DECIMAL(18, 2),
+    discount_rate_mean_last_day    DECIMAL(18, 2),
+    discount_rate_mean_gap         DECIMAL(18, 2),
+    -- discount_rate_mean             DECIMAL(18, 2),
+    sales_amount_last_2day         DECIMAL(30, 2),
+    sales_amount_last_day          DECIMAL(30, 2),
+    sales_amount_gap               DECIMAL(30, 2),
+    sales_amount                   DECIMAL(38, 2)
+);

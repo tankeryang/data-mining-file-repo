@@ -74,7 +74,7 @@ INSERT INTO ods_mms.training_data_base_merge
             cast(week(date_parse(pd_sku.list_date, '%Y%m%d')) AS VARCHAR)
         )                                                                          list_dates_week_code,
         base_str_info.city_name                                                    city_name,
-        ods_cic_str_info.area_code                                                area_code,
+        ods_cic_str_info.area_code                                                 area_code,
         base_str_info.sales_channel                                                sales_channel,
         mms_str_info.store_type                                                    store_type,
         base_str_info.store_level                                                  store_level,
@@ -182,6 +182,7 @@ INSERT INTO ods_mms.training_data_base_merge
         cdm_base.store_info base_str_info
     ON
         mso.store_code = base_str_info.store_code
+        AND base_str_info.city_name IS NOT NULL
     JOIN
         ods_cic.store_info ods_cic_str_info
     ON

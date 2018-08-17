@@ -2,7 +2,7 @@ INSERT INTO ods_mms.skc_con_sale_rate_merge
     SELECT
         mso.sales_order_no                                                         sales_order_no,
         substr(msoi.sku_code, 1, 13)                                               skc_code,
-        concat(cic_st_i.city, '市')                                                city_name,
+        base_str_info.city_name                                                    city_name,
         mso.store_code                                                             terminal_store_code,
         date_format(mso.audit_time, '%Y-%m-%d')                                    audit_date,
         cast(year(mso.audit_time) AS VARCHAR)                                      year_code,
@@ -24,9 +24,9 @@ INSERT INTO ods_mms.skc_con_sale_rate_merge
     ON
         mso.sales_order_no = msoi.sales_order_no
     LEFT JOIN
-        cdm_cic.store_info cic_st_i
+        cdm_base.store_info base_str_info
     ON
-        mso.store_code = cic_st_i.store_code
+        mso.store_code = base_str_info.store_code
     RIGHT JOIN (
         SELECT
             mso.sales_order_no,

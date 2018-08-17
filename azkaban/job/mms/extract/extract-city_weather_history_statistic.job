@@ -1,0 +1,5 @@
+type=command
+command=${cmd}
+
+sql.dir=city_weather_history_statistic
+sql.names=fully

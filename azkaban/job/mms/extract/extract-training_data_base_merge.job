@@ -3,4 +3,4 @@ command=${cmd}
 
 sql.dir=training_data_base_merge
 
-dependencies=extract-skc_con_sale_rate_merge,extract-weather_day_num,extract-weather_night_num
+dependencies=extract-skc_con_sale_rate_merge,extract-weather_day_num,extract-weather_night_num,extract-city_weather_history_statistic
